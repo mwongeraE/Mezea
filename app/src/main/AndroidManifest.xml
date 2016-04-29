@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.jaykayitare.mezea">
 
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -29,6 +30,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".LocationFeed" />
+        <activity android:name=".MapActivity" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="deeef7f58799cc81e1d53114cb730b860527af64" />
+
     </application>
 
 </manifest>
