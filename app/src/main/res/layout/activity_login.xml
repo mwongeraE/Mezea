@@ -7,6 +7,33 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/background_border"
     tools:context="com.example.jaykayitare.mezea.LoginActivity">
 
+    <com.twitter.sdk.android.core.identity.TwitterLoginButton
+        android:id="@+id/twitter_login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+
+    <TextView android:id="@+id/skip_login"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Skip the Login"
+        android:gravity="center"
+        android:textSize="17sp"
+        android:layout_below="@+id/twitter_login_button"
+        android:layout_alignParentStart="true"
+        android:textAlignment="center"
+        android:textColor="@color/orange" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/status"
+        android:textSize="20sp"
+        android:layout_below="@+id/skip_login"
+        android:layout_alignParentStart="true"
+        android:textAlignment="center" />
 </RelativeLayout>

@@ -9,9 +9,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SplashScreen" />
-        <activity android:name=".LocationFeed" />
+        <activity android:name=".LocationFeed" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.MAIN"/>
+                <category
+                    android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
         <activity android:name=".MapActivity" />
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".LoginActivity">
+
+        </activity>
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="deeef7f58799cc81e1d53114cb730b860527af64" />
