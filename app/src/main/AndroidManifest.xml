@@ -24,18 +24,20 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/app_name" >
+        </activity>
+        <activity android:name=".LocationFeed" />
+        <activity android:name=".MapActivity" />
+        <activity android:name=".TimelineActivity">
             <intent-filter>
-                <action android:name="com.example.main.projectstructure.MAINACTIVITY" />
+                <action android:name="android.intent.action.MAIN001" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".LocationFeed" />
-        <activity android:name=".MapActivity" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="deeef7f58799cc81e1d53114cb730b860527af64" />
+            android:value="24884234b0062c5492c85088a2b2f51f35565c8d" />
 
     </application>
 
