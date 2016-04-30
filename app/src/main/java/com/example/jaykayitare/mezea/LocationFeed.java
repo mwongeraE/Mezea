@@ -1,60 +1,30 @@
 package com.example.jaykayitare.mezea;
 
+import android.app.ListActivity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.twitter.sdk.android.Twitter;
-import com.twitter.sdk.android.core.Callback;
-import com.twitter.sdk.android.core.Result;
-import com.twitter.sdk.android.core.TwitterApiClient;
-import com.twitter.sdk.android.core.TwitterAuthConfig;
-import com.twitter.sdk.android.core.TwitterAuthToken;
-import com.twitter.sdk.android.core.TwitterCore;
-import com.twitter.sdk.android.core.TwitterException;
-import com.twitter.sdk.android.core.TwitterSession;
-import com.twitter.sdk.android.core.models.Tweet;
-import com.twitter.sdk.android.core.services.StatusesService;
+import com.twitter.sdk.android.tweetui.SearchTimeline;
+import com.twitter.sdk.android.tweetui.TweetTimelineListAdapter;
 
-import io.fabric.sdk.android.Fabric;
-
-public class LocationFeed extends AppCompatActivity {
+public class LocationFeed extends ListActivity {
 
     String[] crimes = {"Robbery", "murder", "carjacking", "fire"};
     ListView list;
+    private static final String TWITTER_KEY = "yGhy4c9S3Oy3laXHISaGeuZLq";
+    private static final String TWITTER_SECRET = "COTzl4B7SUkUiTiF2GzodHpeVtFmrXglG4SxfxqFxYHdnEwZer";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_location_feed);
+        setContentView(R.layout.timeline);
 
-        list = (ListView)findViewById(R.id.list);
-
-        TwitterSession session = Twitter.getSessionManager().getActiveSession();
-        TwitterAuthToken authToken = session.getAuthToken();
-        String token = authToken.token;
-        String secret = authToken.secret;
-        TwitterAuthConfig authConfig =  new TwitterAuthConfig("yGhy4c9S3Oy3laXHISaGeuZLq", "COTzl4B7SUkUiTiF2GzodHpeVtFmrXglG4SxfxqFxYHdnEwZer");
-        Fabric.with(this, new Twitter(authConfig));
-        TwitterApiClient twitterApiClient = TwitterCore.getInstance().getApiClient();
-
-        StatusesService statusesService = twitterApiClient.getStatusesService();
-        statusesService.show(726092532363452417L, null, null, null, new Callback<Tweet>() {
-            @Override
-            public void success(Result<Tweet> result) {
-                Toast.makeText(getApplicationContext(),"success",Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void failure(TwitterException exception) {
-                Toast.makeText(getApplicationContext(),"failure",Toast.LENGTH_LONG).show();
-            }
-        });
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,android.R.id.text1,crimes);
-        list.setAdapter(adapter);
-
+        final SearchTimeline searchTimeline = new SearchTimeline.Builder()
+                .query("robbery OR crime OR murder OR rape AND nairobi -RT -1.2964, 36.894081,50mi")
+                .build();
+        final TweetTimelineListAdapter adapter = new TweetTimelineListAdapter.Builder(getApplicationContext())
+                .setTimeline(searchTimeline)
+                .build();
+        setListAdapter(adapter);
     }
 }
