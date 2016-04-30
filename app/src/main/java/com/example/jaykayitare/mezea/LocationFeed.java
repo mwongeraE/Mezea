@@ -20,7 +20,7 @@ public class LocationFeed extends ListActivity {
         setContentView(R.layout.timeline);
 
         final SearchTimeline searchTimeline = new SearchTimeline.Builder()
-                .query("robbery OR crime OR murder OR rape AND nairobi -RT -1.2964, 36.894081,50mi")
+                .query("robbery OR riot OR carjack OR violence OR crime OR murder OR rape AND nairobi -RT -politics")
                 .build();
         final TweetTimelineListAdapter adapter = new TweetTimelineListAdapter.Builder(getApplicationContext())
                 .setTimeline(searchTimeline)
