@@ -3,6 +3,7 @@ package com.example.jaykayitare.mezea;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.twitter.sdk.android.Twitter;
@@ -23,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private TwitterLoginButton loginButton;
     private TextView status;
+    private TextView skip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,14 @@ public class LoginActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_login);
 
+        skip = (TextView)findViewById(R.id.skip_login) ;
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent inten = new Intent(getApplicationContext(),ListTrends.class);
+                startActivity(inten);
+            }
+        });
         loginButton = (TwitterLoginButton)findViewById(R.id.twitter_login_button);
         loginButton.setCallback(new LoginHandler());
         status = (TextView)findViewById(R.id.status);
@@ -56,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
 //                    twitterSessionResult.data.getAuthToken().token;
 //
 //            status.setText(output);
-            Intent intent = new Intent(getApplicationContext(), LocationFeed.class);
+            Intent intent = new Intent(getApplicationContext(), ListTrends.class);
             startActivity(intent);
 
         }
