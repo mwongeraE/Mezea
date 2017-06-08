@@ -1,6 +1,6 @@
 # Mezea
 ---
-##Security App
+##Mezea Security App
 This is an app that provides alerts to users over crimes that are happening at a specific place in real time  and also  shows user location according to the tweets about the incident.
 ---
 This app is enriched by users in form of tweeting whenever a certain criminal act happens in a place and it is posted on twitter.
